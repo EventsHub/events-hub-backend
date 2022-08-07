@@ -46,7 +46,7 @@ public class CardController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             cdnManager.deleteFile(Utils.getPublicId(url));
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -69,7 +69,7 @@ public class CardController {
             log.info(String.format(CARD_IS_DELETED, id));
             return new ResponseEntity<>(id, HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -79,7 +79,7 @@ public class CardController {
         try {
             return new ResponseEntity<>(cardService.getById(id), HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -99,7 +99,7 @@ public class CardController {
             log.info(String.format(CARD_IS_UPDATED, updatedCard.getId()));
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
