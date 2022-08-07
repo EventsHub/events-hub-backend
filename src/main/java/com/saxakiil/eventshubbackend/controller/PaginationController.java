@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.saxakiil.eventshubbackend.util.Constants.PAGE_SIZE;
+import static com.saxakiil.eventshubbackend.util.Constants.WRONG_OPERATION_EXCEPTION;
 
 @Slf4j
 @RestController
@@ -43,7 +44,7 @@ public class PaginationController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
