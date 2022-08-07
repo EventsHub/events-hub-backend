@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.saxakiil.eventshubbackend.util.Utils.PAGE_SIZE;
+import static com.saxakiil.eventshubbackend.util.Constants.PAGE_SIZE;
 
 @Slf4j
 @RestController
@@ -27,11 +27,11 @@ public class PaginationController {
     @GetMapping("/getPage")
     public ResponseEntity<Map<String, Object>> getPage(
             @RequestParam Integer pageNumber,
-            @RequestParam Boolean published,
-            @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+            @RequestParam(defaultValue = "true") Boolean published,
+            @RequestParam(defaultValue = PAGE_SIZE) Integer pageSize) {
         try {
             Page<Card> paginationList = cardService.getCardsOnPage(pageNumber,
-                    pageSize == null ? PAGE_SIZE : pageSize, published);
+                    pageSize, published);
 
             Map<String, Object> response = new HashMap<>();
             response.put("cards", paginationList.getContent());

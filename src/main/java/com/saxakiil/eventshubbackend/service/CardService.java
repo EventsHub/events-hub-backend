@@ -1,34 +1,68 @@
 package com.saxakiil.eventshubbackend.service;
 
 import com.saxakiil.eventshubbackend.model.Card;
-import com.saxakiil.eventshubbackend.model.User;
 import com.saxakiil.eventshubbackend.repository.CardRepository;
+import com.saxakiil.eventshubbackend.util.Utils;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CardService {
 
     private final CardRepository cardRepository;
 
-    public Page<Card> getCardsOnPage(int pageNumber, int pageSize, boolean isPublished) {
+    public Card add(Card card) {
+        if (card.getId() == null) {
+            return cardRepository.save(card);
+        }
+        throw new RuntimeException();
+    }
+
+    public Page<Card> getCardsOnPage(final int pageNumber, final int pageSize, final boolean isPublished) {
         Pageable paging = PageRequest.of(pageNumber, pageSize);
         return cardRepository.findByPublished(isPublished, paging);
     }
 
-    public boolean deleteById(Long id) {
+    public Card getById(final Long id) {
+        final Optional<Card> card = cardRepository.findById(id);
+        if (card.isPresent()) {
+            return card.get();
+        }
+        throw new RuntimeException();
+    }
+
+    public String getPublicId(final Long id) {
+        if (cardRepository.findById(id).isPresent()) {
+            final String urlImage = cardRepository.findById(id).get().getUrlImage();
+            return Utils.getPublicId(urlImage);
+        }
+        throw new RuntimeException();
+    }
+
+    public Card update(final Card card) {
+        if (card.getId() != null) {
+            return cardRepository.save(card);
+        }
+        throw new RuntimeException();
+    }
+
+    @SneakyThrows
+    public void deleteById(final Long id) {
         if (cardRepository.findById(id).isPresent()) {
             cardRepository.deleteById(id);
-            return true;
+        } else {
+            throw new RuntimeException();
         }
-        return false;
     }
 
 //    public boolean publishByID(Long id) {
@@ -40,17 +74,6 @@ public class CardService {
 //        }
 //        return false;
 //    }
-
-    public Card addNewCard(Card card) {
-        if (card.getId() != null) {
-            return new Card();
-        }
-        return cardRepository.save(card);
-    }
-
-    public Optional<Card> getById(Long id) {
-        return cardRepository.findById(id);
-    }
 
 //    public boolean addUserInLikedList(User user, Long id) {
 //        if (cardRepository.findById(id).isPresent()) {

@@ -1,4 +1,4 @@
-package com.saxakiil.eventshubbackend.config.jwt;
+package com.saxakiil.eventshubbackend.util;
 
 import com.saxakiil.eventshubbackend.service.UserDetailsImpl;
 import io.jsonwebtoken.Jwts;

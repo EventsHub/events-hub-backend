@@ -1,4 +1,4 @@
-package com.saxakiil.eventshubbackend.auth;
+package com.saxakiil.eventshubbackend.dto.auth;
 
 import com.saxakiil.eventshubbackend.model.Role;
 import lombok.Builder;

@@ -85,9 +85,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.uploadcare</groupId>
-            <artifactId>uploadcare</artifactId>
-            <version>3.5.1</version>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary-http44</artifactId>
+            <version>1.32.2</version>
         </dependency>
 
     </dependencies>

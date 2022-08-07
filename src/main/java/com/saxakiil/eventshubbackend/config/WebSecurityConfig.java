@@ -2,7 +2,7 @@ package com.saxakiil.eventshubbackend.config;
 
 import com.saxakiil.eventshubbackend.config.jwt.AuthEntryPointJwt;
 import com.saxakiil.eventshubbackend.config.jwt.AuthTokenFilter;
-import com.saxakiil.eventshubbackend.config.jwt.JwtUtils;
+import com.saxakiil.eventshubbackend.util.JwtUtils;
 import com.saxakiil.eventshubbackend.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

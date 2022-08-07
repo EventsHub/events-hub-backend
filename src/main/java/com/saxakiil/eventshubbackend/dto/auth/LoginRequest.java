@@ -1,4 +1,4 @@
-package com.saxakiil.eventshubbackend.auth;
+package com.saxakiil.eventshubbackend.dto.auth;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,9 +1,9 @@
 //package com.saxakiil.eventshubbackend.controller;
 //
-//import com.saxakiil.eventshubbackend.auth.JwtResponse;
-//import com.saxakiil.eventshubbackend.auth.LoginRequest;
-//import com.saxakiil.eventshubbackend.auth.MessageResponse;
-//import com.saxakiil.eventshubbackend.config.jwt.JwtUtils;
+//import com.saxakiil.eventshubbackend.dto.auth.JwtResponse;
+//import com.saxakiil.eventshubbackend.dto.auth.LoginRequest;
+//import com.saxakiil.eventshubbackend.dto.auth.MessageResponse;
+//import com.saxakiil.eventshubbackend.util.JwtUtils;
 //import com.saxakiil.eventshubbackend.dto.auth.SignupRequest;
 //import com.saxakiil.eventshubbackend.model.AccountProfile;
 //import com.saxakiil.eventshubbackend.model.Role;
