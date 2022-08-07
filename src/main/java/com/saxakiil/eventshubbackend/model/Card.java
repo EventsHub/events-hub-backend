@@ -23,8 +23,8 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "image_url")
-    private String imageUrl;
+    @Column(name = "url_image")
+    private String urlImage;
 
     private String title;
 

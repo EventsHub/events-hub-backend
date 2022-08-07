@@ -2,14 +2,14 @@ package com.saxakiil.eventshubbackend.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Utils {
 
-    public static int PAGE_SIZE = 20;
-    public static String CARD_IS_NULLABLE_EXCEPTION = "The card sent for addition at %s is null";
-    public static String USER_IS_NOT_FOUND_EXCEPTION = "The User with id='%l' is not found";
-    public static String CARD_IS_ADDED = "The card with id = '%s' was successfully added";
-    public static String CARD_IS_DELETED = "The card with id = '%s' was successfully deleted";
-//    public static String CARD_IS_PUBLISHED = "The card with id = '%s' was successfully published";
+    public static String getPublicId(String url) {
+        final String[] urlElements = StringUtils.split(url, "/");
+        final String lastUrlElement = urlElements[urlElements.length - 1];
+        return lastUrlElement.split("\\.")[0];
+    }
 }

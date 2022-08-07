@@ -2,7 +2,7 @@ package com.saxakiil.eventshubbackend.exception;
 
 import lombok.extern.slf4j.Slf4j;
 
-import static com.saxakiil.eventshubbackend.util.Utils.USER_IS_NOT_FOUND_EXCEPTION;
+import static com.saxakiil.eventshubbackend.util.Constants.USER_IS_NOT_FOUND_EXCEPTION;
 
 @Slf4j
 public class UserNotFoundException extends Exception {

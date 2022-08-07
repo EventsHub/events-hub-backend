@@ -1,6 +1,6 @@
 //package com.saxakiil.eventshubbackend.controller;
 //
-//import com.saxakiil.eventshubbackend.auth.MessageResponse;
+//import com.saxakiil.eventshubbackend.dto.auth.MessageResponse;
 //import com.saxakiil.eventshubbackend.dto.profile.OrganizeProfileResponse;
 //import com.saxakiil.eventshubbackend.model.Card;
 //import com.saxakiil.eventshubbackend.model.EnumRole;

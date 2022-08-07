@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountProfileTransformer {
 
-    public AccountProfile transform(Long id, ProfileRequest profileRequest) {
+    public AccountProfile transform(final Long id, final ProfileRequest profileRequest) {
         return AccountProfile.builder()
                 .id(id)
                 .phoneNumber(profileRequest.getPhoneNumber())

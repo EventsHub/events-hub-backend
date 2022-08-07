@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    Optional<Card> findById(Long id);
+    Optional<Card> findById(final Long id);
 
-    Page<Card> findByPublished(boolean published, Pageable pageable);
+    Page<Card> findByPublished(final boolean published, final Pageable pageable);
 
-    Page<Card> findByTitleContaining(String title, Pageable pageable);
+    Page<Card> findByTitleContaining(final String title, final Pageable pageable);
 }

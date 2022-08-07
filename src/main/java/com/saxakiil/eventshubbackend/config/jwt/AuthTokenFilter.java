@@ -1,6 +1,7 @@
 package com.saxakiil.eventshubbackend.config.jwt;
 
 import com.saxakiil.eventshubbackend.service.UserDetailsServiceImpl;
+import com.saxakiil.eventshubbackend.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
             return headerAuth.substring(7);
         }
-
         return null;
     }
 }
