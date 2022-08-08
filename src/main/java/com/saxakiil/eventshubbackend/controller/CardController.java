@@ -87,7 +87,7 @@ public class CardController {
     @PutMapping(value = "/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     //@PreAuthorize(value = "hasAnyRole('MODERATOR')")
     public ResponseEntity<MessageResponse> update(@NotNull @PositiveOrZero @RequestParam Long id,
-                                                  @Valid @RequestBody CardRequest cardRequest,
+                                                  @Valid CardRequest cardRequest,
                                                   @NotNull @RequestParam MultipartFile file) {
         try {
             final String currentUrl = cardService.getById(id).getUrlImage();
