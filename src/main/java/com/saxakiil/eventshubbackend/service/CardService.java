@@ -21,11 +21,12 @@ public class CardService {
 
     private final CardRepository cardRepository;
 
-    public Card add(Card card) {
+    @SneakyThrows
+    public Card add(final Card card) {
         if (card.getId() == null) {
             return cardRepository.save(card);
         }
-        throw new RuntimeException();
+        throw new UnsupportedOperationException();
     }
 
     public Page<Card> getCardsOnPage(final int pageNumber, final int pageSize, final boolean isPublished) {
@@ -33,27 +34,30 @@ public class CardService {
         return cardRepository.findByPublished(isPublished, paging);
     }
 
+    @SneakyThrows
     public Card getById(final Long id) {
         final Optional<Card> card = cardRepository.findById(id);
         if (card.isPresent()) {
             return card.get();
         }
-        throw new RuntimeException();
+        throw new UnsupportedOperationException();
     }
 
+    @SneakyThrows
     public String getPublicId(final Long id) {
         if (cardRepository.findById(id).isPresent()) {
             final String urlImage = cardRepository.findById(id).get().getUrlImage();
             return Utils.getPublicId(urlImage);
         }
-        throw new RuntimeException();
+        throw new UnsupportedOperationException();
     }
 
+    @SneakyThrows
     public Card update(final Card card) {
         if (card.getId() != null) {
             return cardRepository.save(card);
         }
-        throw new RuntimeException();
+        throw new UnsupportedOperationException();
     }
 
     @SneakyThrows
@@ -61,7 +65,7 @@ public class CardService {
         if (cardRepository.findById(id).isPresent()) {
             cardRepository.deleteById(id);
         } else {
-            throw new RuntimeException();
+            throw new UnsupportedOperationException();
         }
     }
 

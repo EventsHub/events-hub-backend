@@ -10,10 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.HashMap;
 import java.util.Map;
 
 import static com.saxakiil.eventshubbackend.util.Constants.PAGE_SIZE;
+import static com.saxakiil.eventshubbackend.util.Constants.WRONG_OPERATION_EXCEPTION;
 
 @Slf4j
 @RestController
@@ -26,9 +29,9 @@ public class PaginationController {
 
     @GetMapping("/getPage")
     public ResponseEntity<Map<String, Object>> getPage(
-            @RequestParam Integer pageNumber,
+            @PositiveOrZero @RequestParam Integer pageNumber,
             @RequestParam(defaultValue = "true") Boolean published,
-            @RequestParam(defaultValue = PAGE_SIZE) Integer pageSize) {
+            @Positive @RequestParam(defaultValue = PAGE_SIZE) Integer pageSize) {
         try {
             Page<Card> paginationList = cardService.getCardsOnPage(pageNumber,
                     pageSize, published);
@@ -41,7 +44,7 @@ public class PaginationController {
 
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            log.error(WRONG_OPERATION_EXCEPTION, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

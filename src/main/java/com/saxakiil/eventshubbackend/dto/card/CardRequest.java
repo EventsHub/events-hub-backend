@@ -1,21 +1,22 @@
 package com.saxakiil.eventshubbackend.dto.card;
 
-import com.sun.istack.NotNull;
-import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @Data
 public class CardRequest {
 
-    @NotNull
+    @NotBlank
     private String title;
-    @NotNull
+    @NotBlank
     private String place;
     private String description;
-    @NotNull
+    @NotBlank
     private String startDate;
     private String urlOnEvent;
-    private MultipartFile imageFile;
 }
