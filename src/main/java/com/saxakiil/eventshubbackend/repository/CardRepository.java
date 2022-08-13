@@ -11,7 +11,5 @@ public interface CardRepository extends JpaRepository<Card, Long> {
 
     Optional<Card> findById(final Long id);
 
-    Page<Card> findByPublished(final boolean published, final Pageable pageable);
-
-    Page<Card> findByTitleContaining(final String title, final Pageable pageable);
+    Page<Card> findByPublishedOrderByIdAsc(final boolean published, final Pageable pageable);
 }
