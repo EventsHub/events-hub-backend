@@ -31,7 +31,7 @@ public class CardService {
 
     public Page<Card> getCardsOnPage(final int pageNumber, final int pageSize, final boolean isPublished) {
         Pageable paging = PageRequest.of(pageNumber, pageSize);
-        return cardRepository.findByPublishedOrderByIdAsc(isPublished, paging);
+        return cardRepository.findByPublishedOrderByStartDateDesc(isPublished, paging);
     }
 
     @SneakyThrows

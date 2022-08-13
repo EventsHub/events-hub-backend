@@ -1,5 +1,6 @@
 package com.saxakiil.eventshubbackend.dto.card;
 
+import com.saxakiil.eventshubbackend.validator.StartDateConstraint;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +17,7 @@ public class CardRequest {
     @NotBlank
     private String place;
     private String description;
-    @NotBlank
-    private String startDate;
+    @StartDateConstraint
+    private Long startDate;
     private String urlOnEvent;
 }

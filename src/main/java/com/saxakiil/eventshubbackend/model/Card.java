@@ -1,6 +1,5 @@
 package com.saxakiil.eventshubbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -33,7 +31,7 @@ public class Card {
     private String description;
 
     @Column(name = "start_date")
-    private String startDate;
+    private Long startDate;
 
     @Column(name = "url_on_event")
     private String urlOnEvent;
