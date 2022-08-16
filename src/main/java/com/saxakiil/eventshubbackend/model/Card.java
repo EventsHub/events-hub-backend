@@ -38,12 +38,5 @@ public class Card {
 
     @Column(name = "is_published")
     @Builder.Default
-    private Boolean published = Boolean.TRUE;
-//
-//    @Column(name = "user_organize_id")
-//    private long userOrganizeId;
-//
-//    @JsonBackReference
-//    @ManyToMany(mappedBy = "favoriteCards")
-//    private Set<User> likedUsers;
+    private Boolean published = Boolean.FALSE;
 }

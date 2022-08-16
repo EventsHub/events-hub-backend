@@ -25,17 +25,8 @@ public class AccountProfile {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonIgnore
     private long id;
-
-    //Any
     private String phoneNumber;
-
-    //User
     private String firstName;
     private String lastName;
     private String birthday;
-
-    //Organize
-    private String urlOnSite;
-    private String address;
-
 }

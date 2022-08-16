@@ -14,10 +14,14 @@ public class CardRequest {
 
     @NotBlank
     private String title;
+
     @NotBlank
     private String place;
+
     private String description;
+
     @StartDateConstraint
     private Long startDate;
+
     private String urlOnEvent;
 }

@@ -5,11 +5,11 @@ import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = StartDateValidator.class)
+@Constraint(validatedBy = BirthdayFormatValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StartDateConstraint {
-    String message() default "Invalid 'start date'";
+public @interface BirthdayFormatConstraint {
+    String message() default "Invalid 'birthday'";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
