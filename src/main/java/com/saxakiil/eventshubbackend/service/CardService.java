@@ -31,7 +31,7 @@ public class CardService {
 
     public Page<Card> getCardsOnPage(final int pageNumber, final int pageSize, final boolean isPublished) {
         Pageable paging = PageRequest.of(pageNumber, pageSize);
-        return cardRepository.findByPublishedOrderByIdAsc(isPublished, paging);
+        return cardRepository.findByPublishedOrderByStartDateDesc(isPublished, paging);
     }
 
     @SneakyThrows
@@ -69,26 +69,18 @@ public class CardService {
         }
     }
 
-//    public boolean publishByID(Long id) {
-//        if (cardRepository.findById(id).isPresent()) {
-//            Card changedElem = cardRepository.findById(id).get();
-//            changedElem.setPublished(true);
-//            cardRepository.save(changedElem);
-//            return true;
-//        }
-//        return false;
-//    }
-
-//    public boolean addUserInLikedList(User user, Long id) {
-//        if (cardRepository.findById(id).isPresent()) {
-//            Card card = cardRepository.findById(id).get();
-//            if (card.getLikedUsers().contains(user)) {
-//                return false;
-//            }
-//            card.getLikedUsers().add(user);
-//            cardRepository.save(card);
-//            return true;
-//        }
-//        return false;
-//    }
+    @SneakyThrows
+    public boolean publishById(Long id) {
+        final Optional<Card> optionalCard = cardRepository.findById(id);
+        if (optionalCard.isPresent()) {
+            final Card card = optionalCard.get();
+            if (!card.getPublished()) {
+                card.setPublished(true);
+                cardRepository.save(card);
+                return true;
+            }
+            return false;
+        }
+        throw new UnsupportedOperationException();
+    }
 }

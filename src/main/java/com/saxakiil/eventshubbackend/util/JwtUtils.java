@@ -37,7 +37,6 @@ public class JwtUtils {
         } catch (MalformedJwtException | IllegalArgumentException e) {
             log.error(e.getMessage());
         }
-
         return false;
     }
 
