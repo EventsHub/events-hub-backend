@@ -1,6 +1,6 @@
 package com.saxakiil.eventshubbackend.transformer;
 
-import com.saxakiil.eventshubbackend.dto.auth.ProfileRequest;
+import com.saxakiil.eventshubbackend.dto.profile.ProfileRequest;
 import com.saxakiil.eventshubbackend.model.AccountProfile;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,6 @@ public class AccountProfileTransformer {
                 .firstName(profileRequest.getFirstName())
                 .lastName(profileRequest.getLastName())
                 .birthday(profileRequest.getBirthday())
-                .urlOnSite(profileRequest.getUrlOnSite())
-                .address(profileRequest.getAddress())
                 .build();
     }
 }
